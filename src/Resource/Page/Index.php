@@ -1,17 +1,20 @@
 <?php
 namespace Nielsen\SelectRunner\Resource\Page;
 
-use BEAR\Resource\Annotation\Embed;
 use BEAR\Resource\ResourceObject;
 
 class Index extends ResourceObject
 {
-    /**
-     * @Embed(rel="weekday", src="app://self/weekday{?year,month,day}")
-     */
-    public function onGet(int $year, int $month, int $day) : ResourceObject
+    public $body = ['query' => ''];
+
+    public function onGet() : ResourceObject
     {
-        $this->body += compact('year', 'month', 'day');
+        return $this;
+    }
+
+    public function onPost(string $query) : ResourceObject
+    {
+        $this->body['query'] = $query . PHP_EOL . $query;
 
         return $this;
     }

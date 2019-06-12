@@ -1,5 +1,11 @@
 {% extends 'layout/base.html.twig' %}
 {% block title %}Weekday{% endblock %}
 {% block content %}
-    The weekday of {{ year }}/{{ month }}/{{ day }} is {{ weekday.weekday }}.
+    <form method="post" action="/">
+        <div class="form-group">
+            <label for="queryInput">Please Input Select Query</label>
+            <textarea name="query" class="form-control" id="queryInput" rows="20">{{ query }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-default btn-success">Submit</button>
+    </form>
 {% endblock %}
