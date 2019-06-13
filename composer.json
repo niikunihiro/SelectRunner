@@ -11,11 +11,16 @@
         "madapaja/twig-module": "^2.0",
         "ray/web-form-module": "^0.6.0",
         "jdorn/sql-formatter": "^1.2",
-        "koriym/db-app-package": "^1.1"
+        "koriym/query-locator": "^1.4",
+        "ray/aura-sql-module": "^1.6",
+        "ray/query-module": "^0.4.0",
+        "bear/aura-router-module": "^2.0"
     },
     "require-dev": {
         "bear/qatools": "^1.9",
-        "roave/security-advisories": "dev-master"
+        "roave/security-advisories": "dev-master",
+        "robmorgan/phinx": "^0.10.7",
+        "koriym/dev-pdo-statement": "^0.1.0"
     },
     "autoload": {
         "psr-4": {
