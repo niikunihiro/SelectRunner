@@ -4,7 +4,11 @@
     <form method="post" action="/">
         <div class="form-group">
             <label for="queryInput">Please Input Select Query</label>
-            <textarea name="query" class="form-control" id="queryInput" rows="14">{{ query }}</textarea>
+            {{ form.input('query')|raw }}
+            {{ form.error('query') }}
+            {% if error %}
+            <p class="text-danger">{{ error }}</p>
+            {% endif %}
         </div>
         <button type="submit" class="btn btn-default btn-success">Submit</button>
     </form>
