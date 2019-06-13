@@ -2,14 +2,19 @@
 namespace Nielsen\SelectRunner\Resource\Page;
 
 use BEAR\Resource\ResourceObject;
+use Koriym\QueryLocator\QueryLocatorInject;
+use Ray\AuraSqlModule\AuraSqlInject;
 use SqlFormatter;
 
 class Index extends ResourceObject
 {
+    use AuraSqlInject;
+    use QueryLocatorInject;
+
     /** @var SqlFormatter */
     private $sqlFormatter;
 
-    public $body = ['query' => ''];
+    public $body = ['query' => '', 'result' => []];
 
     public function __construct(SqlFormatter $sqlFormatter)
     {
@@ -25,6 +30,13 @@ class Index extends ResourceObject
     {
         $query = $this->sqlFormatter->format($query, false);
         $this->body['query'] = $query;
+
+        $results = $this->pdo->fetchAll($query);
+        if (!empty($results)) {
+            $this->body['results'] = $results;
+
+            $this->body['headers'] = array_keys($results[0]);
+        }
 
         return $this;
     }
